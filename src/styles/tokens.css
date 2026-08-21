@@ -1,0 +1,35 @@
+/* FlytBase design tokens. Single source of truth for colour.
+   Nothing in the app should hardcode a hex value. */
+:root {
+  /* Charcoal */
+  --dbg: #1a1a1a; /* page background */
+  --ds: #242424;  /* raised surface, card, sidebar */
+  --de: #2e2e2e;  /* subtle border */
+  --db: #3d3d3d;  /* stronger border */
+  --dm: #5c5c5c;  /* muted text and icons */
+  --dsc: #999999; /* secondary text */
+  --dbd: #d6d6d6; /* body text */
+  --dh: #f0f0f0;  /* headline text */
+
+  /* Signal Orange. Brand accent only: primary CTA, active nav indicator,
+     brand mark, focus ring. Never a status colour. */
+  --o50: #fdf0e8;
+  --o100: #f4b896;
+  --o200: #ec7d42;
+  --o400: #d95b28;
+  --o600: #a33d14;
+  --o800: #7a2b0e;
+  --o900: #4a1808;
+
+  /* Success */
+  --e400: #3a7a65;
+  --e600: #2b5a4a;
+
+  /* Semantic statuses */
+  --st-success: #3a7a65;  /* Healthy, On Track */
+  --st-warning: #d9a441;  /* Watch, Needs Attention */
+  --st-error: #f43f5e;    /* At Risk, SLA Breach */
+  --st-info: #3e6f9e;     /* Informational */
+  --st-progress: #3e6f9e; /* In Progress */
+  --st-review: #c8923a;   /* Needs Review */
+}

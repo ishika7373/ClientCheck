@@ -1,0 +1,96 @@
+@import "@fontsource/lora/400-italic.css";
+@import "./fonts.css";
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: var(--dbg);
+  }
+  body {
+    background-color: var(--dbg);
+    color: var(--dbd);
+    font-family: Geist, ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    -webkit-font-smoothing: antialiased;
+  }
+  *,
+  *::before,
+  *::after {
+    border-color: var(--de);
+  }
+  :focus-visible {
+    outline: 2px solid var(--o400);
+    outline-offset: 1px;
+  }
+  /* Dark, square, unobtrusive scrollbars for dense tables. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--dbg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--db);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--dm);
+  }
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--dm);
+  }
+  /* Native date pickers render a white glyph on charcoal without this. */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.55);
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    /* --dsc rather than --dm: at 10px the muted tone falls to 2.3:1 on a
+       raised surface, which is not readable. This keeps the label quiet at
+       5.4:1. */
+    color: var(--dsc);
+  }
+  .num {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .surface {
+    background-color: var(--ds);
+    border: 1px solid var(--de);
+  }
+  .hairline {
+    border-color: var(--de);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
