@@ -32,8 +32,7 @@ export function Sidebar({
             </span>
             <span className="min-w-0">
               <span className="block truncate text-table leading-[16px] text-dh">FlytBase</span>
-              <span className="eyebrow block">ClientCheck</span>
-            </span>
+   <span className="eyebrow block text-dbd">ClientCheck</span>            </span>
           </div>
         )}
         <button
