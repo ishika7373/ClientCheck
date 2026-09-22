@@ -451,104 +451,13 @@ export function InteractionsTab({ account }: TabProps) {
 
 /* -------------------------- Business Reviews -------------------------- */
 
-export function ReviewsTab({ account, meta }: TabProps) {
-  const { reviewsFor, logSimulatedAction, activityFor } = useStore();
-  const reviews = reviewsFor(account.id);
-  const next = reviews.find((r) => r.state === "Scheduled");
-  const last = reviews.find((r) => r.state !== "Scheduled");
-  const reviewEvents = activityFor(account.id).filter((e) => e.kind === "Business Review" || e.kind === "Sync");
-
+export function ReviewsTab(_props: TabProps) {
   return (
     <div className="space-y-3">
-      <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-        <Section title="Next business review" right={next ? <Status kind="review" label={next.state} /> : undefined}>
-          {next ? (
-            <>
-              <KeyValue label="Type">{next.type}</KeyValue>
-              <KeyValue label="Date">{fmtDate(next.date)}</KeyValue>
-              <KeyValue label="In">{`${daysUntil(next.date)}d`}</KeyValue>
-              <KeyValue label="Owner">{next.ownerInitials}</KeyValue>
-              <KeyValue label="Attendees">{next.attendees}</KeyValue>
-            </>
-          ) : (
-            <div className="py-2 text-table-sm text-dm">No review scheduled.</div>
-          )}
-        </Section>
-        <Section title="Last business review" right={last ? <Status kind={last.state === "Completed" ? "success" : "review"} label={last.state} /> : undefined}>
-          {last ? (
-            <>
-              <KeyValue label="Type">{last.type}</KeyValue>
-              <KeyValue label="Date">{fmtDate(last.date)}</KeyValue>
-              <KeyValue label="Health at review">{last.healthScoreAtReview}</KeyValue>
-              <KeyValue label="Change since">{`${account.healthScore - last.healthScoreAtReview > 0 ? "+" : ""}${account.healthScore - last.healthScoreAtReview}`}</KeyValue>
-              <KeyValue label="Owner">{last.ownerInitials}</KeyValue>
-            </>
-          ) : (
-            <div className="py-2 text-table-sm text-dm">No completed review on record.</div>
-          )}
-        </Section>
-      </div>
-
       <Panel>
-        <PanelHeader
-          title="Review history"
-          right={
-            <Button
-              glyph={Presentation}
-              onClick={() =>
-                logSimulatedAction(
-                  account.id,
-                  "Business Review",
-                  `Business review opened for ${account.name}. Simulated in this prototype: no calendar invite was created and no external deck was generated.`,
-                )
-              }
-            >
-              Open business review
-            </Button>
-          }
-        />
-        <TableFrame>
-          <thead>
-            <tr>
-              <Th>Type</Th>
-              <Th>Date</Th>
-              <Th align="right">Health at review</Th>
-              <Th>Attendees</Th>
-              <Th>Outcome</Th>
-              <Th>State</Th>
-            </tr>
-          </thead>
-          <tbody>
-            {reviews.map((r) => (
-              <tr key={r.id}>
-                <Td mono>{r.type}</Td>
-                <Td mono className="whitespace-nowrap">
-                  {fmtDate(r.date)}
-                </Td>
-                <Td align="right" mono>
-                  {r.healthScoreAtReview}
-                </Td>
-                <Td className="text-dsc">{r.attendees}</Td>
-                <Td className="min-w-[260px]">{r.outcome}</Td>
-                <Td>
-                  <Status kind={r.state === "Completed" ? "success" : r.state === "Scheduled" ? "review" : "warning"} label={r.state} />
-                </Td>
-              </tr>
-            ))}
-          </tbody>
-        </TableFrame>
-        <div className="border-t border-de px-2 py-1 text-table-sm text-dm">
-          Cadence on this account: MBR monthly, QBR quarterly. Last MBR {fmtDate(meta.lastMbrDate)}, next{" "}
-          {fmtDate(meta.nextMbrDate)}.
-        </div>
+        <PanelHeader title="Business reviews" />
+        <div className="px-3 py-6 text-table-sm text-dm">This section is being reworked. Nothing to show yet.</div>
       </Panel>
-
-      {reviewEvents.length ? (
-        <Panel>
-          <PanelHeader title="Review activity" />
-          <ActivityList events={reviewEvents} />
-        </Panel>
-      ) : null}
     </div>
   );
 }
