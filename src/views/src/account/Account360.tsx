@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { PageHeading } from "../components/primitives";
-import { FallbackNotice } from "../components/DataOrigin";
 
 /* Every section shares this frame: one Lora accented heading, an optional
    summary line, the data origin notice, then the content. */
@@ -27,12 +26,6 @@ export function PageShell({
         {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
       </div>
       <div className="mt-3">
-        <FallbackNotice />
-      </div>
-      <div className="mt-3 space-y-3">{children}</div>
-    </div>
-  );
-}
 
 export function SummaryStrip({ children }: { children: ReactNode }) {
   return <div className="grid grid-cols-2 gap-[1px] border border-de bg-de sm:grid-cols-3 lg:grid-cols-5">{children}</div>;
