@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowsClockwise, NotePencil, Presentation, SignIn } from "@p
 import { useStore } from "../app/storeContext";
 import { statusSemantic } from "../components/AccountTable";
 import { Button, Eyebrow, Panel, ScoreMeter, Status } from "../components/primitives";
-import { FallbackNotice } from "../components/DataOrigin";
 import { daysUntil, fmtCurrencyCompact, fmtDate, renewalReadiness } from "../lib/format";
 import { QuickInfo } from "./QuickInfo";
 import {
@@ -153,10 +152,6 @@ export function Account360({
             Add Note
           </Button>
         </div>
-      </div>
-
-      <div className="mt-3">
-        <FallbackNotice />
       </div>
 
       <div className="mt-3 overflow-x-auto border-b border-de">
